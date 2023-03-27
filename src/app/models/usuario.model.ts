@@ -8,4 +8,14 @@ export class Usuario {
     public isTop10: boolean,
     public birthdate: Date,
   ) {}
+
+  get fullName(): string {
+    return this.firstName +" "+ this.lastName;
+  }
+
+  public date(){
+    return this.birthdate.toLocaleDateString('es-mx', { weekday:"long", year:"numeric", month:"long", day:"numeric"}); 
+    
+  }
 }
+

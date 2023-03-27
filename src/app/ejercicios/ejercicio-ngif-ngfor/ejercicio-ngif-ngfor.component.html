@@ -10,22 +10,36 @@
   pintar la fila de la tabla aplicando la clase 'table-success'
 -->
 
-<app-loading></app-loading>
+<app-loading *ngIf="isLoading"></app-loading>
 
 <div class="container-fluid">
   <h1 class="mb-3">
-    Tabla de usuarios
+   Tabla de Alumnos
   </h1>
   <table class="table table-stripped">
     <thead>
       <tr>
         <th>Id</th>
+        <!-- <th>Nombre completo</th> Ojo aqui, nombre COMPLETO-->
         <th>Nombre completo</th> <!-- Ojo aqui, nombre COMPLETO-->
         <th>E-mail</th>
         <th>Edad</th>
+        <th>Top10</th>
+        <th>Fecha de nacimiento</th>
       </tr>
     </thead>
     <tbody>
+      
+      <tr *ngFor= "let alumno of usuarios"  [ngClass]="alumno.isTop10 == true ? 'table-success' : 'table-warning'">
+        <td>{{alumno.id}}</td>
+        <!--<td>{{alumno.firstName}} {{alumno.lastName}}</td> Nombre completo sin modelo-->
+        <td>{{alumno.fullName | titlecase }}</td> <!--Nombre completo con modelo-->
+        <td>{{alumno.email }}</td>
+        <td>{{alumno.age}}</td>
+        <td>{{alumno.isTop10}}</td>
+        <td>{{alumno.birthdate | date: 'medium'}}</td>
+      </tr>
+  
       <!-- AQUI COMPLETAR EL CONTENIDO -->
     </tbody>
   </table>
